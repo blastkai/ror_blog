@@ -5,16 +5,22 @@
   <%= link_to('sign up', new_registration_path(:user)) %> |
   <%= link_to('login', new_session_path(:user)) %>
 <% end %>
+</br>
+</br>
 
+<%= link_to 'New Post', new_post_path %>
 </br>
 <% @posts.each do |post| %>
   <li>
-    <%= post.title %>
+    <%= post.title %> </br>
+    <%= post.content %> </br>
+    <%= post.user_id %> </br>
+    <%= post.created_at %> </br>
+
     <%= link_to "Show", post_path(post) %>
     <%= link_to 'Edit', edit_post_path(post) %>
-    <%= button_to 'Delete', post_path(post), :method => :delete %>
+    <%= button_to 'Delete', post_path(post), :method => :destroy %>
   </li>
 <% end %>
 </ul>
 
-<%= link_to 'New Post', new_post_path %>

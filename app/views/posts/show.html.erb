@@ -1,0 +1,7 @@
+    <%= @post.title %>
+    <%= simple_format(@post.content) %>
+    <%= @post.user_id %> </br>
+    <%= @post.created_at %> </br>
+
+
+<p><%= link_to 'Back to index', :controller => 'posts', :action => 'index' %></p>
