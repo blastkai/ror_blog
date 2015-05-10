@@ -4,11 +4,11 @@
 <%= simple_format(@post.content) %>
 <%= @post.created_at %> </br>
 
-<%= form_for @comment, :url => { :controller => 'comments', :action => 'create' } do |comment| %>
-    <%= comment.label :comment_content, "comment_content" %>
-    <%= comment.text_area :comment_content %>
+<%= form_for @newcomment, :url => { :controller => 'newcomments', :action => 'create' } do |newcomment| %>
+    <%= newcomment.label :comment_content, "comment_content" %>
+    <%= newcomment.text_area :comment_content %>
 
-    <%= comment.submit "Create" %>
+    <%= newcomment.submit "Create" %>
 <% end %>
 
 
