@@ -4,11 +4,27 @@
 <%= simple_format(@post.content) %>
 <%= @post.created_at %> </br>
 
-<%= form_for @newcomment, :url => { :controller => 'newcomments', :action => 'create' } do |newcomment| %>
-    <%= newcomment.label :comment_content, "comment_content" %>
-    <%= newcomment.text_area :comment_content %>
+<h3>Comments</h3>
 
-    <%= newcomment.submit "Create" %>
+<% @pastcomment.each do |pastcomment| %>
+    <li>
+    	<%= pastcomment.user.email %>   says
+    	<br>
+    	<%= pastcomment.comment_content %>
+    	<br>  
+    	<%= pastcomment.created_at %>
+    </li>
+    <br>
+<% end %>
+
+<%= form_tag({ controller: "newcomments", action: "createcomment" }, method:"post") do %>
+    <h4><%= label_tag(:comment_content, "New Comment") %><h4>
+    <%= text_area_tag("newcomment[comment_content]")%>
+
+
+    <%= hidden_field_tag("newcomment[post_id]", @post.id) %>
+
+    <%= submit_tag("Submit")%>
 <% end %>
 
 

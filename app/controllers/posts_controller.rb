@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user_id = 111
+    @post.user_id = current_user.id
     @post.save
     redirect_to :action => :index
   end
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @newcomment = Newcomment.new
-    #@load_comments = Comment.find(params[:id])
+    @pastcomment = Newcomment.includes(:user).where( post_id: params[:id])
 
   end
 
