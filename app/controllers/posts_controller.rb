@@ -10,13 +10,16 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
     @post.save
-
     redirect_to :action => :index
   end
   
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
+    @load_comments = Comment.find(params[:id])
+
   end
 
   def edit

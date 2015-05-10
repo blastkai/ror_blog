@@ -1,0 +1,6 @@
+class RemoveDateFromPost < ActiveRecord::Migration
+  def change
+    remove_column :posts, :date, :date
+    remove_column :posts, :user_id , :integer
+  end
+end

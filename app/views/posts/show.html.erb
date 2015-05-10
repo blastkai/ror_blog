@@ -1,7 +1,15 @@
-    <%= @post.title %>
-    <%= simple_format(@post.content) %>
-    <%= @post.user_id %> </br>
-    <%= @post.created_at %> </br>
+<%= link_to 'Edit', edit_post_path(@post) %>
+<%= button_to 'Delete', post_path(@post), :method => :destroy %>
+<%= @post.title %>
+<%= simple_format(@post.content) %>
+<%= @post.created_at %> </br>
+
+<%= form_for @comment, :url => { :controller => 'comments', :action => 'create' } do |comment| %>
+    <%= comment.label :comment_content, "comment_content" %>
+    <%= comment.text_area :comment_content %>
+
+    <%= comment.submit "Create" %>
+<% end %>
 
 
 <p><%= link_to 'Back to index', :controller => 'posts', :action => 'index' %></p>
